@@ -34,7 +34,7 @@ func (r IncomingRequest) QueryForm() (*Form, error) {
 	if err != nil {
 		return &Form{}, err
 	}
-	return &Form{values: r.req.Form, err: nil, parsed: true}, nil
+	return &Form{values: r.req.Form, err: nil}, nil
 }
 
 // PostForm TODO
@@ -50,7 +50,7 @@ func (r IncomingRequest) PostForm() (*Form, error) {
 	if err != nil {
 		return &Form{}, err
 	}
-	return &Form{values: r.req.PostForm, err: nil, parsed: true}, nil
+	return &Form{values: r.req.PostForm, err: nil}, nil
 }
 
 // MultipartForm TODO
@@ -74,7 +74,6 @@ func (r IncomingRequest) MultipartForm(maxMemory int64) (*MultipartForm, error) 
 		form: Form{
 			values: r.req.MultipartForm.Value,
 			err:    nil,
-			parsed: true,
 		},
 		file: r.req.MultipartForm.File}
 	return mf, nil
